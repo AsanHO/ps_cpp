@@ -2,56 +2,45 @@
 
 using namespace std;
 
-vector<int> mans;
-vector<int> v;
-vector<vector<int>> indexes;
-
-void print(vector<int> v){
-    for (auto i : v){
-        cout << i;
-    }
-    cout << '\n';
+vector<int> dwarfs;
+vector<int> mem;
+vector<vector<int> > indexes;
+int k = 7;
+void print(vector<int> b) {
+    for (int i : b) cout << i << "\n";
 }
-
-void combi(int start,vector<int> v){
-    if (v.size() == 7){
-        indexes.push_back(v);
+void combi(int start, vector<int> &b) {
+    if (b.size() == k) {
+        indexes.push_back(b);
         return;
     }
-    for (int i = start+1; i < 9; i++)
-    {
-        v.push_back(i);
-        combi(i, v);
-        v.pop_back();
+    for (int i = start + 1; i < 9; i++) {
+        b.push_back(dwarfs[i]);
+        combi(i, b);
+        b.pop_back();
     }
-    return;
 }
-
-int main(int argc, char const *argv[]){
-    
-    for (int i = 0; i<9;i++){
-        int man;
-        cin >> man;
-        mans.push_back(man);
+int sum(vector<int> list) {
+    int sum = 0;
+    for (int i : list) {
+        sum += i;
     }
-    sort(mans.begin(),mans.end());
-    // print(mans);
-    combi(-1,v);
-
-    for (vector<int> index : indexes){
-        int sum = 0;
-        for (int i : index){
-            sum += mans[i];
-        }
-        if (sum == 100){
-            for (int i : index){
-                cout << mans[i];
-                cout << '\n';
-
-            }  
-            
+    return sum;
+}
+int main(int argc, char const *argv[]) {
+    for (int i = 0; i < 9; i += 1) {
+        int input;
+        cin >> input;
+        dwarfs.push_back(input);
+    }
+    combi(-1, mem);
+    for (vector<int> nanjeng : indexes) {
+        if (sum(nanjeng) == 100) {
+            sort(nanjeng.begin(), nanjeng.end());
+            print(nanjeng);
             break;
         }
     }
+
     return 0;
 }
