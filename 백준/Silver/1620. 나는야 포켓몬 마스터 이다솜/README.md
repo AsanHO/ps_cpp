@@ -4,7 +4,7 @@
 
 ### 성능 요약
 
-메모리: 55836 KB, 시간: 240 ms
+메모리: 25528 KB, 시간: 208 ms
 
 ### 분류
 
@@ -12,7 +12,7 @@
 
 ### 제출 일자
 
-2023년 4월 7일 14:51:59
+2024년 11월 22일 13:23:35
 
 ### 문제 설명
 
@@ -30,7 +30,7 @@
 
 <p>어? 누구지?</p>
 
-<p><img alt="" src="" style="height:184px; width:274px"></p>
+<p><img alt="" src="https://www.acmicpc.net/upload/201004/p2.PNG" style="height:184px; width:274px"></p>
 
 <p>오박사 : 나는 태초마을의 포켓몬 박사 오민식 박사라네. 다솜아, 포켓몬을 잡을 때는, 일단 상대 포켓몬의 체력을 적당히 바닥으로 만들어놓고 몬스터 볼을 던져야 한단다. 자, 내 포켓몬 이상해꽃으로 한번 잡아보렴. 포켓몬의 기술을 쓰는 것을 보고 포켓몬을 줄지 안줄지 결정을 하겠네. 자 한번 해보아라. 다솜아.</p>
 
@@ -66,11 +66,11 @@
 
 <p>이다솜 : 그럼 꼬렛을 다시 잡으러 가야겠다. 영식아, 그리고 민식박사님 빠잉!</p>
 
-<p><img alt="" src="" style="height:179px; width:274px"></p>
+<p><img alt="" src="https://www.acmicpc.net/upload/201004/p5.PNG" style="height:179px; width:274px"></p>
 
 <p>이다솜 : 피카츄 공격!</p>
 
-<p><img alt="" src="" style="height:182px; width:274px"></p>
+<p><img alt="" src="https://www.acmicpc.net/upload/201004/p6.PNG" style="height:182px; width:274px"></p>
 
 <p>가라 몬스터 볼!</p>
 
@@ -80,7 +80,7 @@
 
 <p>이다솜 : 그럼! 일단 사천왕을 이기고 오겠어!</p>
 
-<p><img alt="" src="" style="height:181px; width:274px"></p>
+<p><img alt="" src="https://www.acmicpc.net/upload/201004/p8.PNG" style="height:181px; width:274px"></p>
 
 <p>이다솜 : 여기가 사천왕과 대결하려면 가야하는 곳인가..</p>
 
@@ -94,7 +94,7 @@
 
 <p>그동안의 줄거리 : 이다솜은 일단 상록 숲의 체육관 리더에게 도전을 했다. 하지만 상록숲 체육관의 리더는 실종된 상태. 따라서 회색마을부터 도전하기로 했다. 체육관의 리더를 이기면서, 로켓단을 해체시키기도 하고, 여러 가지 사건도 있었다. 결국 전설의 포켓몬도 잡고, 이제 사천왕을 이기려고 도전하기로 했다. 사천왕은 모두 가볍게 이기고, 이제 마지막 라이벌 오!영!식! 이다.</p>
 
-<p><img alt="" src="" style="height:183px; width:274px"></p>
+<p><img alt="" src="https://www.acmicpc.net/upload/201004/pa.PNG" style="height:183px; width:274px"></p>
 
 <p>오영식 : 훗. 1년 전의 그 이다솜이 사천왕을 이기고 현재 포켓몬 마스터인 나에게 덤벼? 어디 한번 덤벼보시지.</p>
 
