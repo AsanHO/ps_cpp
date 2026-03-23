@@ -35,6 +35,7 @@ dist(visited로도 사용)
 --2222-
 */
 
+#include <deque>
 #include <iostream>
 #include <queue>
 
@@ -73,14 +74,14 @@ int main() {
             dist[i][j] = -1;
         }
     }
-    queue<pair<int, int>> q;
-    queue<pair<int, int>> zeroq;
+    deque<pair<int, int>> dq;
+
     dist[startX][startY] = 0;
-    q.push({startX, startY});
-    while (q.size()) {
-        int curX = q.front().first;
-        int curY = q.front().second;
-        q.pop();
+    dq.push_front({startX, startY});
+    while (dq.size()) {
+        int curX = dq.front().first;
+        int curY = dq.front().second;
+        dq.pop_front();
 
         for (int i = 0; i < 4; i++) {
             int nextX = curX + dx[i];
@@ -92,13 +93,13 @@ int main() {
             // 0이면 제로큐에 넣기
             if (map[nextX][nextY] == '0') {
                 dist[nextX][nextY] = dist[curX][curY];
-                zeroq.push({nextX, nextY});
+                dq.push_front({nextX, nextY});
             }
             // 1이면 map에 표시, 큐에 넣기
             if (map[nextX][nextY] == '1') {
                 map[nextX][nextY] = '0';
                 dist[nextX][nextY] = dist[curX][curY] + 1;
-                q.push({nextX, nextY});
+                dq.push_back({nextX, nextY});
             }
             if (map[nextX][nextY] == '#') {
                 map[nextX][nextY] = '0';
@@ -108,35 +109,6 @@ int main() {
             }
         }
 
-        while (zeroq.size()) {
-            int curX = zeroq.front().first;
-            int curY = zeroq.front().second;
-            zeroq.pop();
-            for (int i = 0; i < 4; i++) {
-                int nextX = curX + dx[i];
-                int nextY = curY + dy[i];
-                if (nextX < 0 || nextX >= N) continue;
-                if (nextY < 0 || nextY >= M) continue;
-                if (dist[nextX][nextY] != -1) continue;
-                // 0이면 제로큐에 넣기
-                if (map[nextX][nextY] == '0') {
-                    dist[nextX][nextY] = dist[curX][curY];
-                    zeroq.push({nextX, nextY});
-                }
-                // 1이면 map에 표시, 큐에 넣기
-                if (map[nextX][nextY] == '1') {
-                    map[nextX][nextY] = '0';
-                    dist[nextX][nextY] = dist[curX][curY] + 1;
-                    q.push({nextX, nextY});
-                }
-                if (map[nextX][nextY] == '#') {
-                    map[nextX][nextY] = '0';
-                    dist[nextX][nextY] = dist[curX][curY] + 1;
-                    cout << dist[nextX][nextY];
-                    return 0;
-                }
-            }
-        }
         // printDist();
     }
     cout << "끝!" << dist[targetX][targetY] << endl;
