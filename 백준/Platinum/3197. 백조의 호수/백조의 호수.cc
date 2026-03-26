@@ -65,9 +65,8 @@ void waterMelt() {
             if (nextY < 0 || nextY >= R) continue;
             if (nextX < 0 || nextX >= C) continue;
             if (visited[nextY][nextX]) continue;
-
+            visited[nextY][nextX] = 1;
             if (map[nextY][nextX] == 'X') {
-                visited[nextY][nextX] = 1;
                 map[nextY][nextX] = '.';
                 waternq.push({nextY, nextX});
             }
@@ -93,6 +92,7 @@ bool swanMove() {
             if (map[nextY][nextX] == 'L') {
                 return true;
             }
+
             swanq.push({nextY, nextX});
         }
     }
