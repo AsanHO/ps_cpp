@@ -23,10 +23,12 @@ void check_item() {
     int sum[5] = {0};
     for (int i = 0; i < N; i++) {
         if (!item_visited[i]) continue;
+        cout << i << " + ";
         for (int j = 0; j < 5; j++) {
             sum[j] += items[i][j];
         }
     }
+    cout << endl;
     for (int i = 0; i < 4; i++) {
         if (min_targets[i] > sum[i]) {
             return;
@@ -44,7 +46,7 @@ void check_item() {
     }
 }
 void back_tracking(int cur) {
-    for (int i = 0; i < N; i++) {
+    for (int i = cur + 1; i < N; i++) {
         if (item_visited[i]) continue;
         item_visited[i] = 1;
         check_item();
