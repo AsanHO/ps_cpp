@@ -1,82 +1,55 @@
-#include <algorithm>
-#include <iostream>
 
+/*
+동전의 최소개수를 구한다.
+최소개수는 2개보다 작을수 없다. 최소 2개
+n이 3개일때 마스킹은 6개까지 수행 2*3
+*/
+#include <algorithm>
+#include <bitset>
+#include <iostream>
 using namespace std;
 
 int n;
-char map[20][20];
-int visited_map[40];
-int result = 2100000000;
-
-void print_map() {
-    for (int i = 0; i < n * 2; i++) {
-        cout << visited_map[i] << " ";
-    }
-    cout << endl;
-
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            cout << map[i][j] << " ";
+int min_result = 2100000000;
+int map[21];
+string s;
+void dfs(int cnt) {
+    if (cnt == n) {
+        int total_h_cnt = 0;
+        for (int mask = 1; mask < (1 << n); mask = mask << 1) {
+            int h_cnt = 0;
+            for (int i = 0; i < n; i++) {
+                if (map[i] & mask) h_cnt++;
+            }
+            total_h_cnt += min(h_cnt, n - h_cnt);
         }
-        cout << endl;
-    }
-    cout << endl;
-}
-
-void checkT() {
-    int sum = 0;
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            if (map[i][j] == 'T') sum++;
-        }
-    }
-    result = min(result, sum);
-}
-
-void flip(int flag, bool isCol) {
-    if (isCol) {
-        for (int i = 0; i < n; i++) {
-            map[flag][i] = map[flag][i] == 'H' ? 'T' : 'H';
-        }
+        min_result = min(min_result, total_h_cnt);
         return;
     }
-    for (int i = 0; i < n; i++) {
-        map[i][flag] = map[i][flag] == 'H' ? 'T' : 'H';
-    }
-}
-
-void bt(int cur) {  // 순열이므로 cur은 필요없음
-    for (int i = 0; i < n * 2; i++) {
-        if (visited_map[i]) continue;
-        visited_map[i] = 1;
-        bool isCol = i < n ? true : false;
-        flip(i % n, isCol);
-        // print_map();
-        checkT();
-        bt(i);
-        flip(i % n, isCol);
-        visited_map[i] = 0;
-    }
+    dfs(cnt + 1);
+    map[cnt] = ~map[cnt];
+    dfs(cnt + 1);
 }
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
     cin >> n;
     for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            cin >> map[i][j];
+        cin >> s;
+        int v = 1;
+        for (int j = 0; j < s.size(); j++) {
+            if (s[j] == 'T') {
+                map[i] |= v;
+            }
+            v = v << 1;
         }
     }
-    // print_map();
-    checkT();
-    for (int i = 0; i < n * 2; i++) {
-        visited_map[i] = 1;
-        bool isCol = i < n ? true : false;
-        flip(i % n, isCol);
-        checkT();
-        // print_map();
-        bt(i);
-        flip(i % n, isCol);
-        visited_map[i] = 0;
+    for (int i = 0; i < n; i++) {
+        cout << bitset<4>(map[i]) << endl;
     }
-    cout << result;
+
+    dfs(0);
+    cout << min_result << endl;
     return 0;
 }
